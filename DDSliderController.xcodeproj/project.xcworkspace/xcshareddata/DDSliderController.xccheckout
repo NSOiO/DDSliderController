@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0DFFD511-D772-4B45-B6E2-EAD3EA876E26</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DDSliderController</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B19EA054-2C01-464B-9ED6-C5D32F6ED20C</key>
+		<string>https://github.com/daition340/DDSliderController</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DDSliderController.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B19EA054-2C01-464B-9ED6-C5D32F6ED20C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/daition340/DDSliderController</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B19EA054-2C01-464B-9ED6-C5D32F6ED20C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B19EA054-2C01-464B-9ED6-C5D32F6ED20C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DDSliderController</string>
+		</dict>
+	</array>
+</dict>
+</plist>
