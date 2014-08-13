@@ -19,6 +19,10 @@
 		FE9DC200199B65340000787E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE9DC1E8199B65340000787E /* UIKit.framework */; };
 		FE9DC208199B65340000787E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE9DC206199B65340000787E /* InfoPlist.strings */; };
 		FE9DC20A199B65340000787E /* DDSliderControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9DC209199B65340000787E /* DDSliderControllerDemoTests.m */; };
+		FE9DC216199B69510000787E /* DDSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9DC215199B69510000787E /* DDSliderController.m */; };
+		FE9DC21A199B6F120000787E /* LeftSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9DC218199B6F120000787E /* LeftSideViewController.m */; };
+		FE9DC21B199B6F120000787E /* LeftSideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE9DC219199B6F120000787E /* LeftSideViewController.xib */; };
+		FE9DC21E199B6FAB0000787E /* ClassMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FE9DC21D199B6FAB0000787E /* ClassMode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,13 @@
 		FE9DC205199B65340000787E /* DDSliderControllerDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DDSliderControllerDemoTests-Info.plist"; sourceTree = "<group>"; };
 		FE9DC207199B65340000787E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE9DC209199B65340000787E /* DDSliderControllerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDSliderControllerDemoTests.m; sourceTree = "<group>"; };
+		FE9DC214199B69510000787E /* DDSliderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSliderController.h; sourceTree = "<group>"; };
+		FE9DC215199B69510000787E /* DDSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSliderController.m; sourceTree = "<group>"; };
+		FE9DC217199B6F120000787E /* LeftSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSideViewController.h; sourceTree = "<group>"; };
+		FE9DC218199B6F120000787E /* LeftSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSideViewController.m; sourceTree = "<group>"; };
+		FE9DC219199B6F120000787E /* LeftSideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSideViewController.xib; sourceTree = "<group>"; };
+		FE9DC21C199B6FAB0000787E /* ClassMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassMode.h; sourceTree = "<group>"; };
+		FE9DC21D199B6FAB0000787E /* ClassMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassMode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +118,7 @@
 		FE9DC1EA199B65340000787E /* DDSliderControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FE9DC213199B69060000787E /* DDSliderController */,
 				FE9DC1F3199B65340000787E /* DDAppDelegate.h */,
 				FE9DC1F4199B65340000787E /* DDAppDelegate.m */,
 				FE9DC1F6199B65340000787E /* Images.xcassets */,
@@ -142,6 +154,20 @@
 				FE9DC206199B65340000787E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE9DC213199B69060000787E /* DDSliderController */ = {
+			isa = PBXGroup;
+			children = (
+				FE9DC214199B69510000787E /* DDSliderController.h */,
+				FE9DC215199B69510000787E /* DDSliderController.m */,
+				FE9DC217199B6F120000787E /* LeftSideViewController.h */,
+				FE9DC218199B6F120000787E /* LeftSideViewController.m */,
+				FE9DC219199B6F120000787E /* LeftSideViewController.xib */,
+				FE9DC21C199B6FAB0000787E /* ClassMode.h */,
+				FE9DC21D199B6FAB0000787E /* ClassMode.m */,
+			);
+			path = DDSliderController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE9DC21B199B6F120000787E /* LeftSideViewController.xib in Resources */,
 				FE9DC1EF199B65340000787E /* InfoPlist.strings in Resources */,
 				FE9DC1F7199B65340000787E /* Images.xcassets in Resources */,
 			);
@@ -240,6 +267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE9DC1F5199B65340000787E /* DDAppDelegate.m in Sources */,
+				FE9DC216199B69510000787E /* DDSliderController.m in Sources */,
+				FE9DC21E199B6FAB0000787E /* ClassMode.m in Sources */,
+				FE9DC21A199B6F120000787E /* LeftSideViewController.m in Sources */,
 				FE9DC1F1199B65340000787E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +467,7 @@
 				FE9DC20F199B65340000787E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE9DC210199B65340000787E /* Build configuration list for PBXNativeTarget "DDSliderControllerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +476,7 @@
 				FE9DC212199B65340000787E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
