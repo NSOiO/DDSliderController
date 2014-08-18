@@ -7,6 +7,15 @@
 //
 
 #import "DDAppDelegate.h"
+#import "DDSliderController.h"
+#import "LeftSideViewController.h"
+#import "ClassMode.h"
+
+@interface DDAppDelegate ()
+
+@property (strong, nonatomic) UIWindow *tmpWindow;
+
+@end
 
 @implementation DDAppDelegate
 
@@ -15,7 +24,28 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    /**
+     *
+     */
+    DDSliderController *slider = [DDSliderController sharedController];
+    LeftSideViewController *leftSideController = [[LeftSideViewController alloc] init];
+    leftSideController.classNamesArray = @[@"MainViewController",
+                                           @"TopicDailyController",
+                                           @"MyCollectionController",
+                                           @"APPRecommendController",
+                                           @"SettingViewController"];
+    
+    slider.leftSideViewController = leftSideController;
+    slider.sliderMode = NormalMode;
+
+    
+    
+    self.window.rootViewController = slider;
     [self.window makeKeyAndVisible];
+
+
+    
     return YES;
 }
 

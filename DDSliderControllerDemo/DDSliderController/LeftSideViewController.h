@@ -10,4 +10,6 @@
 
 @interface LeftSideViewController : UIViewController
 
+@property (strong, nonatomic) NSArray *classNamesArray;
+
 @end

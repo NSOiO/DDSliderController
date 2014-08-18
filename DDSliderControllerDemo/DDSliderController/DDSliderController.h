@@ -10,14 +10,20 @@
 
 typedef NS_ENUM(NSInteger, SliderMode) {
     NetEaseMode = 0,
-    ZhiHuMode
+    ZhiHuMode,
+    NormalMode
 };
 
+@class ClassMode;
 @interface DDSliderController : UIViewController
 
-@property (assign, nonatomic) SliderMode sliderMode;
 
+@property (assign, nonatomic) SliderMode sliderMode;
+@property (strong, nonatomic) UIViewController *leftSideViewController;
+@property (strong, nonatomic) ClassMode *mainClassMode;
 
 +(instancetype)sharedController;
+- (void)showCenterControllerWithClassMode:(ClassMode *)mode;
 
 @end
+
