@@ -5,3 +5,10 @@ similar with netease news and zhihu daily controller (类似与网易新闻和�
 
 
 ![input_bar](./gif/DDSilder.gif)
+
+
+## Usage
+==================
+···
+
+···
