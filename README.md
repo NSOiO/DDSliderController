@@ -24,8 +24,9 @@ similar with netease news and zhihu daily controller (类似与网易新闻和�
 
 
 ## Thans to
-1.[MMDrawerController](https://github.com/mutualmobile/MMDrawerController)
-2.[HRSliderController](http://blog.csdn.net/cocoarannie/article/details/12589439)
+
+* [MMDrawerController](https://github.com/mutualmobile/MMDrawerController)
+* [HRSliderController](http://blog.csdn.net/cocoarannie/article/details/12589439)
 
 
 
