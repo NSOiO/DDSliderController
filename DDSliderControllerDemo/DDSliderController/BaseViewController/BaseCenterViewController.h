@@ -15,7 +15,6 @@
 
 @end
 
-
 @interface BaseCenterViewController : UIViewController
 
 @property (weak, nonatomic) id <BaseCenterDelegate>delegate;

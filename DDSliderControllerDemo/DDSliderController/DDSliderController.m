@@ -19,7 +19,6 @@
 #define DZhiHuContentOffset 150.0f
 #define DJudgeOffset 100.0f
 
-
 typedef NS_ENUM(NSInteger, DMoveDirection) {
     DMoveDirectionLeft = 0,
     DMoveDirectionRight
@@ -53,7 +52,8 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     return self;
 }
 
-- (id)init{
+- (id)init
+{
     if (self = [super init]) {
         //init property
         _controllersDic = [NSMutableDictionary dictionary];
@@ -63,7 +63,8 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     return self;
 }
 
-+(instancetype)sharedController{
++(instancetype)sharedController
+{
     static DDSliderController * controller = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -75,7 +76,8 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
 #pragma mark -
 #pragma mark lazy init
 
-- (UIView *)centerView{
+- (UIView *)centerView
+{
     if (!_centerView) {
         _centerView = [[UIView alloc] initWithFrame:self.view.frame];
         _centerView.backgroundColor = [UIColor clearColor];
@@ -83,20 +85,21 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     return _centerView;
 }
 
-- (UIViewController *)leftSideViewController{
+- (UIViewController *)leftSideViewController
+{
     if (!_leftSideViewController) {
         _leftSideViewController = [[UIViewController alloc] init];
     }
     return _leftSideViewController;
 }
 
-- (ClassMode *)mainClassMode{
+- (ClassMode *)mainClassMode
+{
     if (!_mainClassMode) {
         _mainClassMode = [[ClassMode alloc] initWithTitle:@"Main" className:@"BaseCenterViewController"];
     }
     return _mainClassMode;
 }
-
 
 - (void)viewDidLoad
 {
@@ -104,11 +107,9 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"top_navigation_background.png"] forBarMetrics:UIBarMetricsDefault];
     
-    
     // init gestrue
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureCallBack:)];
     self.tapGestureRecognizer.enabled = NO;
-    
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureCallBack:)];
     
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
@@ -123,8 +124,8 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     [self showCenterControllerWithClassMode:self.mainClassMode];
 }
 
-- (void)initSubController{
-    
+- (void)initSubController
+{
     [self addChildViewController:self.leftSideViewController];
     self.leftSideView = self.leftSideViewController.view;
     [self.view addSubview:self.leftSideView];
@@ -133,8 +134,8 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
 }
 
 
-- (void)closeSide{
-    
+- (void)closeSide
+{
     if (self.sliderMode == NetEaseMode || self.sliderMode == NormalMode) {
         CGAffineTransform oriT = CGAffineTransformIdentity;
         [UIView animateWithDuration:DCloseDuration
@@ -157,13 +158,10 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         }];
         
     } //end ZhiHuMode
-    
-    
 }
 
-- (void)showCenterControllerWithClassMode:(ClassMode *)mode{
-    
-    
+- (void)showCenterControllerWithClassMode:(ClassMode *)mode
+{
     UIViewController *viewController = self.controllersDic[mode.className];
     
     //lazy init controller
@@ -173,9 +171,7 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         vc.title = mode.title;
         vc.delegate = self;
 
-        
         viewController = [[BaseNavigationController alloc] initWithRootViewController:vc];
-        
         
         [self.controllersDic setObject:viewController forKey:mode.className];
     } else {
@@ -186,7 +182,6 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
             return;
         }
     }
-    
     
     NSArray *arr = self.view.subviews;
     NSLog(@"arr are %@",arr);
@@ -223,12 +218,13 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
 #pragma mark -
 #pragma mark gesture
 
-- (void)tapGestureCallBack:(UITapGestureRecognizer *)tap{
+- (void)tapGestureCallBack:(UITapGestureRecognizer *)tap
+{
     [self closeSide];
 }
 
-- (void)panGestureCallBack:(UIPanGestureRecognizer *)pan{
-    
+- (void)panGestureCallBack:(UIPanGestureRecognizer *)pan
+{
     if (self.sliderMode == NetEaseMode || self.sliderMode == NormalMode) {
         [self moveViewInNetEaseModeWithPanGesture:pan];
     } else if (self.sliderMode == ZhiHuMode){
@@ -236,35 +232,29 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     }
 }
 
-- (void)moveViewInNetEaseModeWithPanGesture:(UIPanGestureRecognizer *)pan{
+- (void)moveViewInNetEaseModeWithPanGesture:(UIPanGestureRecognizer *)pan
+{
     static CGFloat currentTranslateX;
-    if (pan.state == UIGestureRecognizerStateBegan)
-    {
+    
+    if (pan.state == UIGestureRecognizerStateBegan) {
         currentTranslateX = self.centerView.transform.tx;
     }
-    else if (pan.state == UIGestureRecognizerStateChanged)
-    {
+    else if (pan.state == UIGestureRecognizerStateChanged) {
         CGFloat transX = [pan translationInView:self.centerView].x;
         transX = transX + currentTranslateX;
        
         
         CGFloat sca;
-        if (transX > 0)
-        {
-            
-            if (self.centerView.frame.origin.x < DContentOffset)
-            {
+        if (transX > 0) {
+            if (self.centerView.frame.origin.x < DContentOffset) {
                 sca = 1 - (self.centerView.frame.origin.x/DContentOffset) * (1-DContentScale);
             }
-            else
-            {
+            else {
                 sca = DContentScale;
             }
         }
-        else    //transX < 0
-        {
+        else {    //transX < 0
             return;
-            
         }
         CGAffineTransform transS = CGAffineTransformMakeScale(sca, sca);
         CGAffineTransform transT = CGAffineTransformMakeTranslation(transX, 0);
@@ -276,12 +266,11 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         
         self.centerView.transform = conT;
     }
-    else if (pan.state == UIGestureRecognizerStateEnded)
-    {
+    else if (pan.state == UIGestureRecognizerStateEnded) {
         CGFloat panX = [pan translationInView:self.centerView].x;
         CGFloat finalX = currentTranslateX + panX;
-        if (finalX > DJudgeOffset)
-        {
+        if (finalX > DJudgeOffset) {
+            
             CGAffineTransform conT = [self transformWithDirection:DMoveDirectionRight andSliderMode:self.sliderMode];
             [UIView beginAnimations:nil context:nil];
             self.centerView.transform = conT;
@@ -290,8 +279,7 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
             self.tapGestureRecognizer.enabled = YES;
             return;
         }
-        if (finalX < -DJudgeOffset)
-        {
+        if (finalX < -DJudgeOffset) {
             return;
             CGAffineTransform conT = [self transformWithDirection:DMoveDirectionLeft andSliderMode:self.sliderMode];
             [UIView beginAnimations:nil context:nil];
@@ -301,8 +289,7 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
             self.tapGestureRecognizer.enabled = YES;
             return;
         }
-        else
-        {
+        else {
             CGAffineTransform oriT = CGAffineTransformIdentity;
             [UIView beginAnimations:nil context:nil];
             self.centerView.transform = oriT;
@@ -333,32 +320,24 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         CGFloat ss = transX / DZhiHuContentOffset;
         
         
-        if (transX > 0)
-        {
+        if (transX > 0) {
             
         }
-        else    //transX < 0
-        {
+        else {    //transX < 0
             return;
-            
         }
         
         contentTransform = CATransform3DTranslate(contentTransform, transX, 0.0, 0.0);
-        
         contentTransform = CATransform3DRotate(contentTransform, DEG2RAD(-45 * ss), 0.0, 1.0, 0.0);
         self.centerView.layer.transform = contentTransform;
-
-        
     }// end UIGestureRecognizerStateChanged
     
     else if (pan.state == UIGestureRecognizerStateEnded){
 
-        
         CGFloat panX = [pan translationInView:self.view].x;
         CGFloat finalX = currentTranslateX + panX;
         
-        if (finalX > DJudgeOffset)
-        {
+        if (finalX > DJudgeOffset) {
             //CGAffineTransform conT = [self transformWithDirection:DMoveDirectionRight];
             CATransform3D conT = CATransform3DIdentity;
             conT.m34 = -1.0f / 800.0f;
@@ -374,13 +353,10 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
             self.tapGestureRecognizer.enabled = YES;
             return;
         }
-        if (finalX < -DJudgeOffset)
-        {
+        if (finalX < -DJudgeOffset) {
             return;
-
         }
-        else
-        {
+        else {
             CATransform3D oriT = CATransform3DIdentity;
             [UIView beginAnimations:nil context:nil];
             self.centerView.layer.transform = oriT;
@@ -390,10 +366,7 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         }
         
     }//end UIGestureRecognizerStateEnded
-    
 }
-
-
 
 #pragma mark -
 #pragma mark Private
@@ -411,8 +384,6 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         default:
             break;
     }
-    
-    
 
     CGAffineTransform transT = CGAffineTransformMakeTranslation(translateX, 0);
     CGAffineTransform scaleT = CGAffineTransformMakeScale(DContentScale, DContentScale);
@@ -444,14 +415,11 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
     self.centerView.layer.shadowOpacity = 0.8f;
 }
 
-
-
-
 #pragma mark -
 #pragma mark BaseCenterDelegate
 
-- (void)leftButtonClicked:(UIButton *)button{
-    
+- (void)leftButtonClicked:(UIButton *)button
+{
     if (self.tapGestureRecognizer.enabled == YES) {
         [self closeSide];
         return;
@@ -469,10 +437,7 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
         //contentTransform = CATransform3DTranslate(contentTransform, DContentOffset - (self.centerView.frame.size.width / 2 * 0.4), 0.0, 0.0);
         contentTransform = CATransform3DTranslate(contentTransform, DZhiHuContentOffset, 0.0, 0.0);
         //contentTransform = CATransform3DScale(contentTransform, 0.6, 0.6, 0.6);
-        
         contentTransform = CATransform3DRotate(contentTransform, DEG2RAD(-45), 0.0, 1.0, 0.0);
-        
-        
         [UIView animateWithDuration:.3
                               delay:0.0
                             options:UIViewAnimationOptionCurveEaseInOut
@@ -500,10 +465,6 @@ typedef NS_ENUM(NSInteger, DMoveDirection) {
                          }];
         
     } //end NetEaseMode || NormalMode
-    
-    
-
-    
 }
 /*
 - (UIStatusBarStyle)preferredStatusBarStyle

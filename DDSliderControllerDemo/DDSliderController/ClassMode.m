@@ -10,22 +10,21 @@
 
 @implementation ClassMode
 
-- (id)init{
-    
+- (id)init
+{
     if (self = [super init]) {
         
     }
-    
     return self;
 }
 
-- (instancetype)initWithTitle:(NSString *)title className:(NSString *)className{
+- (instancetype)initWithTitle:(NSString *)title className:(NSString *)className
+{
     self = [self init];
     if (self) {
         self.title = title;
         self.className = className;
     }
-    
     return self;
 }
 

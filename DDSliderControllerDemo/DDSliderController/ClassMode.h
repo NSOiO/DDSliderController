@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface ClassMode : NSObject
-
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *className;

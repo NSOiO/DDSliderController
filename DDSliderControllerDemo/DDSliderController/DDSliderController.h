@@ -17,7 +17,6 @@ typedef NS_ENUM(NSInteger, SliderMode) {
 @class ClassMode;
 @interface DDSliderController : UIViewController
 
-
 @property (assign, nonatomic) SliderMode sliderMode;
 @property (strong, nonatomic) UIViewController *leftSideViewController;
 @property (strong, nonatomic) ClassMode *mainClassMode;

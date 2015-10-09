@@ -40,7 +40,8 @@
 
 
 const int tagOffset = 1000;
-- (IBAction)showViewControllerButtonClicked:(UIButton *)button{
+- (IBAction)showViewControllerButtonClicked:(UIButton *)button
+{
     DDSliderController *slider = [DDSliderController sharedController];
     NSInteger offset = button.tag - tagOffset;
     
@@ -52,7 +53,8 @@ const int tagOffset = 1000;
     
 }
 
-- (IBAction)modeSegmentedControll:(UISegmentedControl *)sender {
+- (IBAction)modeSegmentedControll:(UISegmentedControl *)sender
+{
     DDSliderController *slider = [DDSliderController sharedController];
     switch (sender.selectedSegmentIndex) {
         case 0:
@@ -69,6 +71,5 @@ const int tagOffset = 1000;
     
     [slider performSelector:@selector(closeSide)];
 }
-
 
 @end
